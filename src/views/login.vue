@@ -11,10 +11,6 @@
         <el-form-item prop="password">
           <el-input prefix-icon="wyicon icon-lock" type="password" v-model="userForm.password" placeholder="密码"></el-input>
         </el-form-item>
-        <el-form-item prop="kaptcha">
-          <el-input style="width: 100px;" v-model="userForm.kaptcha" placeholder="验证码" maxlength="4"></el-input>
-          <img class="ql-login__img" :src="codeUrl" alt="" @click="refreshCode">
-        </el-form-item>
 
         <el-form-item>
           <el-button type="primary" size="large" native-type="submit" :loading="submited" @click.prevent="login" style="width: 100%;">登录</el-button>
@@ -34,13 +30,6 @@ import { validCodeUrl } from '@/api/auth'
 import { PASSPORD_HASH } from '@/constants/password'
 export default {
   data () {
-    const validSms = (rule, value, cb) => {
-      if (this.needSmsCode && !value && !this.resending) {
-        cb(new Error('请输入短信码'))
-      } else {
-        cb()
-      }
-    }
     return {
       submited: false,
       codeUrl: validCodeUrl(Date.now()),
@@ -48,7 +37,6 @@ export default {
       countTimer: null,
       userForm: {
         userName: '',
-        kaptcha: '',
         password: ''
       },
       rules: {
@@ -57,12 +45,6 @@ export default {
         ],
         password: [
           { required: true, message: '请输入密码' }
-        ],
-        kaptcha: [
-          { required: true, message: '请输入验证码' }
-        ],
-        smsCode: [
-          { validator: validSms }
         ]
       }
     }
@@ -73,11 +55,6 @@ export default {
   },
 
   methods: {
-    refreshCode () {
-      this.codeUrl = validCodeUrl(Date.now())
-      this.userForm.kaptcha = ''
-    },
-
     login () {
       this.$refs.form.validate(valid => {
         if (valid) {
@@ -86,11 +63,9 @@ export default {
           this.submited = true
           password = md5(`${password}${PASSPORD_HASH}`)
           this.$store.dispatch('login', { userName, password, kaptcha }).then((data) => {
-            console.log(data)
             this.submited = false
             this.$router.push({ path: '/' })
           }).catch(() => {
-            this.refreshCode()
             this.submited = false
           })
         }

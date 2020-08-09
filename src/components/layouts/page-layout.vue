@@ -9,8 +9,8 @@
         <router-link
           class="ql-layout__logo is-waye"
           :to="{path: '/'}">
-          <span class="ql-layout__logo-abbr" v-show="isCollapse">WAYE</span>
-          <div class="ql-layout__logo-title" v-show="!isCollapse">WAYE PRO</div>
+          <span class="ql-layout__logo-abbr" v-show="isCollapse">Template</span>
+          <div class="ql-layout__logo-title" v-show="!isCollapse">Template</div>
         </router-link>
         <ql-menu :collapse="isCollapse"></ql-menu>
       </el-aside>
@@ -59,7 +59,7 @@
           </div>
         </el-main>
         <el-footer height="30px" class="ql-layout__footer">
-          @上海蔚一信息技术有限公司
+          mapbar_front 个人模板项目
         </el-footer>
       </el-container>
     </el-container>
@@ -182,20 +182,12 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  @import '../../assets/scss/common/transition.scss';
-  @import '../../assets/scss/common/var.scss';
-  @import '../../assets/scss/mixins/utils.scss';
-
-  $aside-bg-color: #000c17;
-  $main-bg-color: #f0f2f5;
-  $menu-item-color: #038ce1;
-  $menu-active-color: #188fff;
-  $menu-hover-color: rgba(255, 255, 255, 0.05);
+<style lang="less">
   body {
     margin: 0;
     padding: 0;
   }
+
   html,
   #app,
   body,
@@ -203,81 +195,93 @@ export default {
   .ql-layout__aside {
     height: 100vh;
   }
+
   .ql-layout {
     &__logo {
-      height: $--header-height;
-      line-height: $--header-height;
       display: block;
+      height: 60px;
       overflow: hidden;
+      line-height: 60px;
       background: #002140;
 
       &-title {
-        color: #fff;
         display: inline-block;
-        vertical-align: middle;
         margin: 0 0 0 18px;
-        font-size: 16px;
+        color: #fff;
         font-weight: 550;
+        font-size: 16px;
+        vertical-align: middle;
+
         strong {
           font-size: 24px;
         }
       }
-      &-abbr{
-        width: 64px;
-        line-height: $--header-height;
+
+      &-abbr {
         display: inline-block;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 700;
+        width: 64px;
         color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 60px;
+        text-align: center;
       }
     }
+
     &__header {
-      align-items: center;
       position: relative;
+      align-items: center;
       padding: 0;
       box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-      @include utils-clearfix;
+
       &-toggle {
-        line-height: $--header-height;
         float: left;
-        cursor: pointer;
         padding: 0 24px;
         font-size: 24px;
+        line-height: 60px;
+        cursor: pointer;
         transition: all 0.3s;
       }
+
       .el-breadcrumb {
-        line-height: $--header-height;
+        line-height: 60px;
       }
+
       .el-breadcrumb__item:last-child .el-breadcrumb__inner {
         font-size: 16px;
       }
+
       &-right {
         position: absolute;
-        right: 0;
         top: 0;
+        right: 0;
         display: flex;
+
         .el-badge__content {
           border: 0;
+
           &.is-fixed {
             top: 50%;
             transform: translateY(-100%) translateX(100%);
           }
         }
       }
+
       &-dropdown {
         .dropdown-link {
-          line-height: $--header-height;
-          height: $--header-height;
-          cursor: pointer;
+          position: relative;
           display: inline-flex;
           align-items: center;
+          height: 60px;
           padding: 0 12px;
+          line-height: 60px;
+          cursor: pointer;
           transition: all 0.3s;
-          position: relative;
+
           .el-avatar {
             margin-right: 8px;
           }
+
           &.msg-prompt {
             // position: relative;
             // // line-height: 60px;
@@ -288,120 +292,146 @@ export default {
             i {
               font-size: 18px;
             }
+
             .el-badge {
               vertical-align: top;
             }
           }
+
           &:hover {
             // background: $--color-primary-light-7;
           }
         }
       }
     }
+
     &__submenu {
       .el-menu {
-        background: $aside-bg-color;
+        background: #000c17;
+
         &-item {
           &:hover {
             color: #fff !important;
           }
+
           &.is-active {
-            background: $menu-active-color !important;
             color: #fff;
+            background: #188fff !important;
           }
         }
       }
+
       & .el-submenu {
         &.is-active {
           & .el-submenu__title {
-            background: $menu-active-color !important;
+            background: #188fff !important;
           }
         }
+
         &__title {
           &:hover {
-            background: $menu-hover-color !important;
+            background: rgba(255, 255, 255, 0.05) !important;
           }
+
           & i {
             color: rgba(255, 255, 255, 0.9);
           }
         }
       }
     }
+
     &__aside {
-      box-shadow: 2px 0 6px rgba(5, 55, 102, 0.35);
-      transition: width 0.3s;
       position: relative;
       z-index: 10;
       overflow: visible;
-      background: $aside-bg-color;
+      background: #000c17;
+      box-shadow: 2px 0 6px rgba(5, 55, 102, 0.35);
+      transition: width 0.3s;
+
       &-menu {
+        height: calc(100% - 60px);
         overflow-y: auto;
-        height: calc(100% - #{$--header-height});
       }
+
       &-empty {
-        color: #f2f2f2;
         padding: 20px 0 0 20px;
+        color: #f2f2f2;
+
         &.is-collapse {
           padding: 5px 0 0 3px;
         }
       }
+
       .el-menu {
         border: none;
+
         .wyicon {
           margin-right: 4px;
         }
+
         .el-menu-item {
-          background: $aside-bg-color;
+          background: #000c17;
+
           &:hover {
             color: #fff !important;
           }
         }
+
         .el-submenu:hover,
         .el-submenu__title:hover {
           color: #fff !important;
         }
+
         .el-submenu.is-active,
         .el-menu-item.is-active {
-          background-color: $menu-active-color !important;
           color: #fff !important;
+          background-color: #188fff !important;
         }
       }
+
       .el-menu-item i {
         color: rgba(255, 255, 255, 0.9);
       }
+
       .el-submenu {
         &.is-active {
           background: #037dc8;
+
           &.is-opened {
             background: #037dc8;
           }
         }
+
         i {
           color: rgba(255, 255, 255, 0.8);
         }
       }
+
       .footer {
-        color: rgba(255, 255, 255, 0.5);
-        bottom: 12px;
         position: absolute;
+        bottom: 12px;
         left: 10px;
+        color: rgba(255, 255, 255, 0.5);
       }
     }
+
     &__main {
-      padding: 0;
       display: flex;
       flex-direction: column;
+      padding: 0;
     }
+
     &__content {
-      background: $main-bg-color;
-      padding: 20px;
       flex: 1;
+      padding: 20px;
+      background: #f0f2f5;
     }
+
     &__footer {
-      text-align: center;
-      background: $main-bg-color;
-      color: $--color-primary;
+      color: #409eff;
       line-height: 30px;
+      text-align: center;
+      background: #f0f2f5;
     }
   }
 

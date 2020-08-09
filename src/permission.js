@@ -16,12 +16,10 @@ router.beforeEach((to, from, next) => {
   if (whiteList.includes(to.name)) {
     next()
   } else if (Vue.ls.get('userInfo')) {
-    console.log(store.getters)
     if (store.getters.asyncRoutes.length === 0) {
       store
         .dispatch('genAsyncRoutes', store.getters.permissions)
         .then(() => {
-          console.log('store.getters.asyncRoutes', store.getters.asyncRoutes)
           router.addRoutes(store.getters.asyncRoutes)
           const redirect = decodeURIComponent(from.query.redirect || to.path)
           if (to.path === redirect) {

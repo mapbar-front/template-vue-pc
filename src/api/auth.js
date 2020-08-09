@@ -1,21 +1,11 @@
 import axios from './index.js'
-import { post, getFileUrl, postByForm } from '../utils/fetch'
 
 export function login (params) {
   return axios.get('/system/mgr/login', params)
 }
 
 export function logout () {
-  return post('system/mgr/logout')
-}
-
-/**
- * 获取验证码
- * @export
- * @param {any} time 时间戳
- */
-export function validCodeUrl (time) {
-  return getFileUrl('system/kaptcha', { time })
+  return axios.post('system/mgr/logout')
 }
 
 /**
@@ -23,5 +13,5 @@ export function validCodeUrl (time) {
  * @param {*} params 参数
  */
 export function changePwd (params) {
-  return postByForm('system/user/modifyPwd', params)
+  return axios.post('system/user/modifyPwd', params)
 }

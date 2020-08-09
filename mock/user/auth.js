@@ -7,5 +7,11 @@ let userInfo = {
 export default {
   'get|/system/mgr/login': option => {
     return userInfo
+  },
+  'post|/system/mgr/logout': option => {
+    return true
+  },
+  'post|/system/mgr/modifyPwd': option => {
+    return true
   }
 }

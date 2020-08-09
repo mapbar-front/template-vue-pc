@@ -17,7 +17,8 @@ module.exports = {
     'selector-pseudo-element-no-unknown': [true, {
       ignorePseudoElements: ['v-deep']
     }],
-    'selector-max-id': null
+    'selector-max-id': null,
+    'no-descending-specificity': null
   },
   // 这里在迁移之前， 会把有sass的文件的忽略掉（每个项目配置不一样）
   ignoreFiles: [
