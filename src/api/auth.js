@@ -1,7 +1,8 @@
+import axios from './index.js'
 import { post, getFileUrl, postByForm } from '../utils/fetch'
 
 export function login (params) {
-  return post('system/mgr/login', params)
+  return axios.get('/system/mgr/login', params)
 }
 
 export function logout () {

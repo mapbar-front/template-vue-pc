@@ -106,7 +106,9 @@ const user = {
         let routes
         let routeData = cloneDeep(navConfig)
         parseRoutes(routeData)
-        if (state.userCode === SUPER_ADMIN) {
+        console.log(routeData)
+        console.log(state)
+        if (state.userCode === 'SUPER_ADMIN') {
           routes = routeData
         } else {
           let filterPaths = accessedRoutePaths(permissions, codeMap)

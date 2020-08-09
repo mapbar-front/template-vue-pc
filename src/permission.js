@@ -15,11 +15,13 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
   if (whiteList.includes(to.name)) {
     next()
-  } else if (localStorage.getItem('userInfo')) {
+  } else if (Vue.ls.get('userInfo')) {
+    console.log(store.getters)
     if (store.getters.asyncRoutes.length === 0) {
       store
         .dispatch('genAsyncRoutes', store.getters.permissions)
         .then(() => {
+          console.log('store.getters.asyncRoutes', store.getters.asyncRoutes)
           router.addRoutes(store.getters.asyncRoutes)
           const redirect = decodeURIComponent(from.query.redirect || to.path)
           if (to.path === redirect) {
@@ -33,7 +35,8 @@ router.beforeEach((to, from, next) => {
             })
           }
           NProgress.done()
-        }).catch(() => {
+        }).catch((e) => {
+          console.log(e)
           NProgress.done()
         })
     } else {

@@ -8,11 +8,13 @@ const mainRouteConfig = [
     children: [
       {
         name: 'hello',
+        path: '/hello',
         component: () => import('@/views/hello'),
         label: 'Hello'
       },
       {
         name: 'component',
+        path: '/component',
         component: () => import('@/views/component'),
         label: '组件'
       }

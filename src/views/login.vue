@@ -86,8 +86,9 @@ export default {
           this.submited = true
           password = md5(`${password}${PASSPORD_HASH}`)
           this.$store.dispatch('login', { userName, password, kaptcha }).then((data) => {
+            console.log(data)
             this.submited = false
-            this.$router.push({ path: this.$route.query.redirect || '/' })
+            this.$router.push({ path: '/' })
           }).catch(() => {
             this.refreshCode()
             this.submited = false
