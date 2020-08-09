@@ -1,8 +1,9 @@
 {
-  "name": "waye-pro",
+  "name": "template-vue-pc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -52,6 +53,7 @@
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "less-loader": "^6.2.0",
     "lint-staged": "^10.2.11",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",

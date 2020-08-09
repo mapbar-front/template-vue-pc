@@ -15,7 +15,7 @@ router.beforeEach((to, from, next) => {
   NProgress.start()
   if (whiteList.includes(to.name)) {
     next()
-  } else if (Vue.ls.get('userInfo')) {
+  } else if (localStorage.getItem('userInfo')) {
     if (store.getters.asyncRoutes.length === 0) {
       store
         .dispatch('genAsyncRoutes', store.getters.permissions)
