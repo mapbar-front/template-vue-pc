@@ -26,13 +26,11 @@
 
 <script>
 import md5 from 'md5'
-import { validCodeUrl } from '@/api/auth'
 import { PASSPORD_HASH } from '@/constants/password'
 export default {
   data () {
     return {
       submited: false,
-      codeUrl: validCodeUrl(Date.now()),
       sended: false,
       countTimer: null,
       userForm: {
